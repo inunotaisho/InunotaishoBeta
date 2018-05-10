@@ -1,4 +1,4 @@
-using Asp2017.Server.Helpers;
+using InunotaishoBeta.Server.Helpers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
 using System;
-using Asp2017.Server.Models;
+using InunotaishoBeta.Server.Models;
 
-namespace AspCoreServer.Controllers
+namespace InunotaishoBeta.Controllers
 {
   public class HomeController : Controller
   {

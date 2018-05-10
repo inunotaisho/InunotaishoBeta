@@ -1,7 +1,7 @@
-﻿using AspCoreServer.Models;
+﻿using InunotaishoBeta.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace AspCoreServer.Data
+namespace InunotaishoBeta.Data
 {
     public class SpaDbContext : DbContext
     {

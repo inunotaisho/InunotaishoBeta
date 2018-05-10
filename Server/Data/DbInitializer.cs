@@ -2,10 +2,10 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using AspCoreServer.Models;
-using AspCoreServer;
+using InunotaishoBeta.Models;
+using InunotaishoBeta;
 
-namespace AspCoreServer.Data
+namespace InunotaishoBeta.Data
 {
     public static class DbInitializer
     {
