@@ -1,25 +1,25 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "./InunotaishoBeta/node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "AspnetCore-Angular-Universal"
+    "name": "InunotaishoBeta"
   },
   "apps": [
     {
-      "root": "ClientApp"
+      "root": "InunotaishoBeta/ClientApp"
     }
   ],
   "defaults": {
-    "styleExt": "scss",
+    "styleExt": "less",
     "component": {
       "spec": false
     }
   },
   "lint":[
     {
-      "project": "ClientApp/tsconfig.app.json"
+      "project": "InunotaishoBeta/ClientApp/tsconfig.app.json"
     },
     {
-      "project": "ClientApp/tsconfig.spec.json"
+      "project": "InunotaishoBeta/ClientApp/tsconfig.spec.json"
     }
   ]
 }
