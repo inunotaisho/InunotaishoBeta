@@ -43,8 +43,8 @@ module.exports = function (options) {
           loader: ['to-string-loader', 'css-loader']
         },
         {
-          test: /\.scss$/,
-          loader: ['raw-loader', 'sass-loader']
+          test: /\.less$/,
+          loader: ['raw-loader', 'less-loader']
         },
         {
           test: /\.html$/,

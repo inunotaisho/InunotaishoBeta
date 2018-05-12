@@ -12,7 +12,7 @@ import { REQUEST } from '@nguniversal/aspnetcore-engine/tokens';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
+    styleUrls: ['./styles/main.less'],
     encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit, OnDestroy {

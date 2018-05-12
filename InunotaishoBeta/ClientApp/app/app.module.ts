@@ -14,13 +14,27 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './components/navmenu/navmenu.component';
-import { HomeComponent } from './containers/home/home.component';
-import { UsersComponent } from './containers/users/users.component';
-import { UserDetailComponent } from './components/user-detail/user-detail.component';
-import { CounterComponent } from './containers/counter/counter.component';
-import { NotFoundComponent } from './containers/not-found/not-found.component';
-import { NgxBootstrapComponent } from './containers/ngx-bootstrap-demo/ngx-bootstrap.component';
+
+import { routes } from "./routes/routes.module";
+
+import { Navbar} from '../app/components/navbar/navbar.component';
+import { HomeComponent } from '../app/components/home/home.component';
+import { EdComponent } from '../app/components/education/ed.component';
+import { PortfolioComponent } from '../app/components/portfolio/portfolio.component';
+import { BlogComponent } from '../app/components/blog/blog.component';
+import { BlogPostComponent } from '../app/components/blogpost/blogpost.component';
+import { LoginComponent }from '../app/components/login/login.component';
+import { ProfileComponent } from '../app/components/profile/profile.component';
+import { WriteComponent } from '../app/components/write/write.component';
+import { ContactComponent } from '../app/components/contact/contact.component';
+import { RegComponent } from '../app/components/reg/reg.component';
+import { ErrorComponent } from '../app/components/errors/error.component';
+import portImgContainer from '../app/components/portfolio/images/portfolio.image.component';
+import FroalaEditor from '../app/components/write/froala-editor/froala.component';
+
+import { AuthGuard } from "../app/services/authguard/authguard.service";
+
+
 
 import { LinkService } from './shared/link.service';
 import { UserService } from './shared/user.service';
@@ -38,13 +52,20 @@ export function createTranslateLoader(http: HttpClient, baseHref) {
 @NgModule({
     declarations: [
         AppComponent,
-        NavMenuComponent,
-        CounterComponent,
-        UsersComponent,
-        UserDetailComponent,
+        BlogComponent,
+        BlogPostComponent,
+        ContactComponent,
+        EdComponent,
+        FroalaEditor,
         HomeComponent,
-        NotFoundComponent,
-        NgxBootstrapComponent
+        LoginComponent,
+        Navbar,
+        ProfileComponent,
+        PortfolioComponent,
+        portImgContainer,
+        RegComponent,
+        WriteComponent,
+        ErrorComponent
     ],
     imports: [
         CommonModule,
@@ -69,82 +90,14 @@ export function createTranslateLoader(http: HttpClient, baseHref) {
         }),
 
         // App Routing
-        RouterModule.forRoot([
-            {
-                path: '',
-                redirectTo: 'home',
-                pathMatch: 'full'
-            },
-            {
-                path: 'home', component: HomeComponent,
-
-                // *** SEO Magic ***
-                // We're using "data" in our Routes to pass in our <title> <meta> <link> tag information
-                // Note: This is only happening for ROOT level Routes, you'd have to add some additional logic if you wanted this for Child level routing
-                // When you change Routes it will automatically append these to your document for you on the Server-side
-                //  - check out app.component.ts to see how it's doing this
-                data: {
-                    title: 'Homepage',
-                    meta: [{ name: 'description', content: 'This is an example Description Meta tag!' }],
-                    links: [
-                        { rel: 'canonical', href: 'http://blogs.example.com/blah/nice' },
-                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/' }
-                    ]
-                }
-            },
-            {
-                path: 'counter', component: CounterComponent,
-                data: {
-                    title: 'Counter',
-                    meta: [{ name: 'description', content: 'This is an Counter page Description!' }],
-                    links: [
-                        { rel: 'canonical', href: 'http://blogs.example.com/counter/something' },
-                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/counter' }
-                    ]
-                }
-            },
-            {
-                path: 'users', component: UsersComponent,
-                data: {
-                    title: 'Users REST example',
-                    meta: [{ name: 'description', content: 'This is User REST API example page Description!' }],
-                    links: [
-                        { rel: 'canonical', href: 'http://blogs.example.com/chat/something' },
-                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/users' }
-                    ]
-                }
-            },
-            {
-                path: 'ngx-bootstrap', component: NgxBootstrapComponent,
-                data: {
-                    title: 'Ngx-bootstrap demo!!',
-                    meta: [{ name: 'description', content: 'This is an Demo Bootstrap page Description!' }],
-                    links: [
-                        { rel: 'canonical', href: 'http://blogs.example.com/bootstrap/something' },
-                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/bootstrap-demo' }
-                    ]
-                }
-            },
-
-            { path: 'lazy', loadChildren: './containers/lazy/lazy.module#LazyModule'},
-
-            {
-                path: '**', component: NotFoundComponent,
-                data: {
-                    title: '404 - Not found',
-                    meta: [{ name: 'description', content: '404 - Error' }],
-                    links: [
-                        { rel: 'canonical', href: 'http://blogs.example.com/bootstrap/something' },
-                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/bootstrap-demo' }
-                    ]
-                }
-            }
-        ], {
-          // Router options
-          useHash: false,
-          preloadingStrategy: PreloadAllModules,
-          initialNavigation: 'enabled'
-        })
+        RouterModule.forRoot(
+          routes,
+          {
+            // Router options
+            useHash: false,
+            preloadingStrategy: PreloadAllModules,
+            initialNavigation: 'enabled'
+          })
     ],
     providers: [
         LinkService,
